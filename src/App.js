@@ -13,7 +13,7 @@ const reducer = (state, action) => {
       return action.data;
     }
     case 'CREATE' :{
-      newState = [...action.data,...state];
+      newState = [action.data,...state];
       break;
     }
     case 'REMOVE': {
@@ -65,8 +65,8 @@ const dummyData = () => [
 ];
 function App() {
   const [data, dispatch] = useReducer(reducer,dummyData());
-  const dataId = useRef(0);
-  console.log(new Date().getTime());
+  const dataId = useRef(6);
+
   const onCreate = (date,content,emotion) => {
     dispatch({
       type:"CREATE",
@@ -83,12 +83,12 @@ function App() {
     dispatch({type: "REMOVE", targetId});
   }
   
-  const onEdit =(targetId, data, content, emotion) => {
+  const onEdit =(targetId, date, content, emotion) => {
     dispatch({
       type: "EDIT",
       data:{
         id:targetId,
-        data:new Date(data).getTime(),
+        date:new Date(date).getTime(),
         content,
         emotion
       }
@@ -107,7 +107,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home/>} />
               <Route path="/new" element={<New/>} />
-              <Route path="/edit" element={<Edit/>} />
+              <Route path="/edit/:id" element={<Edit/>} />
               <Route path="/diary/:id" element={<Diary/>} />
             </Routes>
           </div>
