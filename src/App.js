@@ -48,12 +48,12 @@ function App() {
       dispatch({type:"INIT", data:diaryList});
     }
   }, [])
-  const onCreate = (date,content,emotion) => {
+  const onCreate = (content,emotion) => {
     dispatch({
       type:"CREATE",
       data:{
         id:dataId.current,
-        date: new Date(date).getTime(),
+        date: new Date().getTime(),
         content,
         emotion
     }});
@@ -64,12 +64,12 @@ function App() {
     dispatch({type: "REMOVE", targetId});
   }
   
-  const onEdit =(targetId, date, content, emotion) => {
+  const onEdit =(targetId, content, emotion) => {
     dispatch({
       type: "EDIT",
       data:{
         id:targetId,
-        date:new Date(date).getTime(),
+        date:new Date().getTime(),
         content,
         emotion
       }
