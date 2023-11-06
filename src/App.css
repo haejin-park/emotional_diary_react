@@ -309,6 +309,7 @@ header button {
   overflow-wrap: break-word;
 }
 .DiaryPage .diary_content_wrapper p {
+  white-space: pre-wrap;
   padding: 20px;
   text-align: left;
   font-size: 20px;
